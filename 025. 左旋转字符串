@@ -1,0 +1,31 @@
+# 汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。对于一个给定的字符序列S，
+# 请你把其循环左移K位后的序列输出。
+# 例如，字符序列S=”abcXYZdef”,
+# 要求输出循环左移3位后的结果，即“XYZdefabc”。
+# 是不是很简单？OK，搞定它！
+
+# 先把前n个字符记录下来 在原来的字符上删去 加到末尾即可
+# str.replace(old,goal)
+class Solution:
+    def LeftRotateString(self, s, n):
+        if len(s) == 0:
+            return s
+        a = ''
+        for _ in range(n):
+            a = a + s[_]
+        s = s.replace(a, '')
+        s = s + a
+        return s
+
+
+
+        # write code here
+
+#无需删除替换 直接返回指定位置
+class Solution:
+    def LeftRotateString(self, s, n):
+        if len(s) == 0:
+            return s
+        a = s[:n]
+        s = s + a
+        return s[n:len(s)]
